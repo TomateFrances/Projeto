@@ -10,8 +10,10 @@
             crossorigin="anonymous">
         <title>Agenda de contatos</title>
     </head>
+
     <body>
         <div>
+            <br>
             <div>
                 <h1>Agenda de Contatos</h1>
                 <p>Complete com os seus dados abaixo</p>
@@ -22,14 +24,14 @@
                 <div>
                     <label for="nome">Nome completo:
                     </label>
-                    <input type="text">
+                    <input type="text" name="nome" id="">
                 </div>
                 <br>
 
                 <div>
                     <label for="email">E-mail:
                     </label>
-                    <input type="email">
+                    <input type="email" name="email" id="">
                 </div>
                 <br>
 
@@ -48,16 +50,23 @@
                 <br>
 
                 <div>
+                    <label for="estado">Estado: 
+                    </label>
+                    <input type="text" name="estado" id="">
+                </div>
+                <br>
+
+                <div>
                     <label for="">Endereço:
                     </label>
-                    <input type="text">
+                    <input type="text" name="endereco" id="">
                 </div>
                 <br>
 
                 <div>
                     <label for="">Data de nascimento:
                     </label>
-                    <input type="datetime">
+                    <input type="datetime" name="data_nascimento" id="">
                 </div>
                 <br>
 
@@ -65,6 +74,5 @@
                 <button>Excluir</button>
             </form>
         </div>
-
     </body>
 </html>
