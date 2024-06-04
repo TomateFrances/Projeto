@@ -17,15 +17,15 @@ try {
         $nomeCompleto = $_POST['nomeCompleto'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
-        $cidade = $_POST['cidade'];
         $estado = $_POST['estado'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-        $celular = $_POST['celular'];
+        $cidade = $_POST['cidade'];
+        $endereco = $_POST['endereco'];
+        $data_nascimento = $_POST['data_nascimento'];
+        $cpf = $_POST['cpf'];
 
         // Prepara a consulta SQL
-        $sql = "INSERT INTO lista (nomeCompleto, email, telefone, cidade )
-                VALUES (:nomeCompleto, :email, :telefone, :cidade,)";
+        $sql = "INSERT INTO lista (nomeCompleto, email, telefone, estado, cidade, endereco, data_nascimento, cpf )
+                VALUES (:nomeCompleto, :email, :telefone, :estado, :cidade, :endereco, :data_nascimento, :cpf,)";
 
         // Prepara a declaração
         $stmt = $pdo->prepare($sql);
@@ -34,16 +34,11 @@ try {
         $stmt->bindValue(':nomeCompleto', $nomeCompleto, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindValue(':cidade', $cidade, PDO::PARAM_STR);
         $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindValue(':celular', $celular, PDO::PARAM_STR);
-        $stmt->bindValue(':cpf', $cpf, PDO::PARAM_STR);
-        $stmt->bindValue(':genero', $genero, PDO::PARAM_STR);
+        $stmt->bindValue(':cidade', $cidade, PDO::PARAM_STR);
+        $stmt->bindValue(':endereco', $endereco, PDO::PARAM_STR);
         $stmt->bindValue(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
-        $stmt->bindValue(':profissao', $profissao, PDO::PARAM_STR);
-        $stmt->bindValue(':nacionalidade', $nacionalidade, PDO::PARAM_STR);
+        $stmt->bindValue(':cpf', $cpf, PDO::PARAM_STR);
 
         // Executa a consulta
         $stmt->execute();
