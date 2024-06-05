@@ -12,70 +12,70 @@
     </head>
 
     <body>
-        <div>
+        <div class="container text-center">
             <h1>Agenda de Contatos</h1>
             <p>Complete com os seus dados abaixo</p>
             <br>
 
-            <form action="">
+            <form method="POST">
                 <div>
                     <label for="nome">Nome completo:
                     </label>
-                    <input type="text" name="nome" id="">
+                    <input type="text" name="nome" id="nome" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="email">E-mail:
                     </label>
-                    <input type="email" name="email" id="">
+                    <input type="email" name="email" id="email" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="telefone">Telefone/Telefone Celular:
                     </label>
-                    <input type="tel" name="telefone" id="">
+                    <input type="tel" name="telefone" id="telefone" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="estado">Estado:
                     </label>
-                    <input type="text" name="estado" id="">
+                    <input type="text" name="estado" id="estado" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="cidade">Cidade:
                     </label>
-                    <input type="text" name="cidade" id="">
+                    <input type="text" name="cidade" id="cidade" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="endereco">Endereço:
                     </label>
-                    <input type="text" name="endereco" id="">
+                    <input type="text" name="endereco" id="endereco" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="data_nascimento">Data de nascimento:
                     </label>
-                    <input type="datetime" name="data_nascimento" id="">
+                    <input type="datetime" name="data_nascimento" id="data_nascimento" required="required">
                 </div>
                 <br>
 
                 <div>
                     <label for="cpf">CPF:
                     </label>
-                    <input type="text" name="cpf" id="">
+                    <input type="text" name="cpf" id="cpf" required="required">
                 </div>
                 <br>
 
-                <button>Confirmar</button>
-                <button>Excluir</button>
+                <button type="submit">Confirmar</button>
+                <button type="reset">Excluir</button>
             </form>
         </div>
     </body>

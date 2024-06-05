@@ -1,6 +1,6 @@
 <?php
 // Configurações do banco de dados
-$dsn = 'mysql:host=localhost;dbname=cadastro';
+$dsn = 'mysql:host=localhost;dbname=agenda';
 $username = 'root';
 $password = '';
 
