@@ -14,7 +14,7 @@ try {
     // Verifica se o formulário foi submetido
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Obtém os dados do formulário
-        $nomeCompleto = $_POST['nomeCompleto'];
+        $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
         $estado = $_POST['estado'];
@@ -24,14 +24,14 @@ try {
         $cpf = $_POST['cpf'];
 
         // Prepara a consulta SQL
-        $sql = "INSERT INTO lista (nomeCompleto, email, telefone, estado, cidade, endereco, data_nascimento, cpf )
-                VALUES (:nomeCompleto, :email, :telefone, :estado, :cidade, :endereco, :data_nascimento, :cpf,)";
+        $sql = "INSERT INTO agenda (nome, email, telefone, estado, cidade, endereco, data_nascimento, cpf )
+                VALUES (:nome, :email, :telefone, :estado, :cidade, :endereco, :data_nascimento, :cpf)";
 
         // Prepara a declaração
         $stmt = $pdo->prepare($sql);
 
         // Associa os parâmetros com os valores
-        $stmt->bindValue(':nomeCompleto', $nomeCompleto, PDO::PARAM_STR);
+        $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':telefone', $telefone, PDO::PARAM_STR);
         $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
