@@ -2,9 +2,14 @@
 // conectar ao banco de dados
 $db = new mysqli('localhost', 'root', '', 'crud');
 
+// verificar conexão
+if ($db->connect_errno) {
+    die('Erro na conexão: ' . $db->connect_error);
+}
+
 // funções para crud
 function getNomes() {
-    global $db
+    global $db;
     $sql = "SELECT * FROM nomes";
     $result = $db->query($sql);
     $nomes = [];
@@ -34,20 +39,19 @@ function excluirNome($id) {
 
 // ações do CRUD
 $acao = isset($_GET['acao']) ? $_GET['acao'] : null;
-$id = isset($GET['id']) ? intval($_GET['id']) : 0;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 
 if ($acao === 'adicionar') {
     adicionarNome($nome);
-    header ('Location: crud_php');
+    header('Location: crud.php');
     exit();
 } elseif ($acao === 'editar') {
     $id = intval($_GET['id']);
-    $nomeoriginal = ($_GET['nome']);
+    $nomeoriginal = $_GET['nome']; // Corrigido para $_GET['nome']
     $nome = $_POST['nome'];
     editarNome($id, $nome);
-    header('Location: editar.php?id=' . $id . 'nome=' . $nomeoriginal);
-    // redirecionar para editar.php com o ID
+    header('Location: editar.php?id=' . $id . '&nome=' . urlencode($nomeoriginal)); // Corrigido para separar id e nome com '&'
     exit();
 } elseif ($acao === 'excluir') {
     excluirNome($id);
@@ -60,9 +64,9 @@ $nomes = getNomes();
 ?>
 
 <h1>Lista de nomes</h1>
-<form method="post" action="acao=adicionar">
+<form method="post" action="crud.php?acao=adicionar">
     <label for="nome">Nome: </label>
-    <input type="text" id="nome" name="name" required="required">
+    <input type="text" id="nome" name="nome" required="required"> <!-- Corrigido de 'name' para 'nome' -->
     <button type="submit">Adicionar</button>
 </form>
 <table border="border">
@@ -71,16 +75,17 @@ $nomes = getNomes();
         <th>Nome</th>
         <th>Ações</th>
     </tr>
-    <?php foreach ($nome as $nome): ?>
+    <?php foreach ($nomes as $nome): ?> <!-- Corrigido de $nome para $nomes -->
     <tr>
         <td><?php echo $nome['id']; ?></td>
         <td><?php echo $nome['nome']; ?></td>
         <td>
-            <a href="?acao=editar&id=<?php echo $nome['id']; ?>
-            &nome=<?php echo urlencode($nome['nome']); ?>">Editar</a>
+            <a href="?acao=editar&id=<?php echo $nome['id']; ?>&nome=<?php echo urlencode($nome['nome']); ?>">Editar</a>
             <a href="?acao=excluir&id=<?php echo $nome['id']; ?>">Excluir</a>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
 <?php $db->close(); ?>
+
+
