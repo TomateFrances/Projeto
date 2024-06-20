@@ -1,6 +1,6 @@
 <?php
     // Conectar ao banco de dados
-    $db = new mysqli('localhost', 'root', '', 'crud');
+    $db = new mysqli('localhost', 'root', '', 'agenda');
 
     if ($db->connect_error) {
         echo "Erro: Falha ao conectar ao banco de dados. " . $db->connect_error;

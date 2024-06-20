@@ -17,15 +17,11 @@ try {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
-        $estado = $_POST['estado'];
-        $cidade = $_POST['cidade'];
-        $endereco = $_POST['endereco'];
         $data_nascimento = $_POST['data_nascimento'];
-        $cpf = $_POST['cpf'];
 
         // Prepara a consulta SQL
-        $sql = "INSERT INTO agenda (nome, email, telefone, estado, cidade, endereco, data_nascimento, cpf )
-                VALUES (:nome, :email, :telefone, :estado, :cidade, :endereco, :data_nascimento, :cpf)";
+        $sql = "INSERT INTO agenda (nome, email, telefone, data_nascimento)
+                VALUES (:nome, :email, :telefone, :data_nascimento)";
 
         // Prepara a declaração
         $stmt = $pdo->prepare($sql);
@@ -34,11 +30,7 @@ try {
         $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $stmt->bindValue(':cidade', $cidade, PDO::PARAM_STR);
-        $stmt->bindValue(':endereco', $endereco, PDO::PARAM_STR);
         $stmt->bindValue(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
-        $stmt->bindValue(':cpf', $cpf, PDO::PARAM_STR);
 
         // Executa a consulta
         $stmt->execute();
@@ -106,85 +98,12 @@ try {
                 <br>
 
                 <div>
-                    <label for="estado">Estado:
-                    </label>
-                    <select
-                        name="estado"
-                        id="estado"
-                        required="required">
-                        <option value=""></option>
-                        <option value="ac">AC</option>
-                        <option value="al">AL</option>
-                        <option value="ap">AP</option>
-                        <option value="am">AM</option>
-                        <option value="ba">BA</option>
-                        <option value="ce">CE</option>
-                        <option value="df">DF</option>
-                        <option value="es">ES</option>
-                        <option value="go">GO</option>
-                        <option value="ma">MA</option>
-                        <option value="mt">MT</option>
-                        <option value="ms">MS</option>
-                        <option value="mg">MG</option>
-                        <option value="pa">PA</option>
-                        <option value="pb">PB</option>
-                        <option value="pr">PR</option>
-                        <option value="pe">PE</option>
-                        <option value="pi">PI</option>
-                        <option value="rj">RJ</option>
-                        <option value="rn">RN</option>
-                        <option value="rs">RS</option>
-                        <option value="ro">RO</option>
-                        <option value="rr">RR</option>
-                        <option value="sc">SC</option>
-                        <option value="sp">SP</option>
-                        <option value="se">SE</option>
-                        <option value="to">TO</option>
-                    </select>
-                </div>
-                <br>
-
-                <div>
-                    <label for="cidade">Cidade:
-                    </label>
-                    <input
-                        type="text"
-                        name="cidade"
-                        id="cidade"
-                        required="required">
-                </div>
-                <br>
-
-                <div>
-                    <label for="endereco">Endereço:
-                    </label>
-                    <input
-                        type="text"
-                        name="endereco"
-                        id="endereco"
-                        required="required" 
-                        placeholder="Rua do Tomate, 123">
-                </div>
-                <br>
-
-                <div>
                     <label for="data_nascimento">Data de nascimento:
                     </label>
                     <input
                         type="date"
                         name="data_nascimento"
                         id="data_nascimento"
-                        required="required">
-                </div>
-                <br>
-
-                <div>
-                    <label for="cpf">CPF:
-                    </label>
-                    <input
-                        type="text"
-                        name="cpf"
-                        id="cpf"
                         required="required">
                 </div>
                 <br>

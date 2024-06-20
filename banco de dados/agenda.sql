@@ -32,11 +32,7 @@ CREATE TABLE `agenda` (
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefone` varchar(255) NOT NULL,
-  `estado` varchar(255) NOT NULL,
-  `cidade` varchar(255) NOT NULL,
-  `endereco` varchar(255) NOT NULL,
-  `data_nascimento` int(255) NOT NULL,
-  `cpf` int(255) NOT NULL
+  `data_nascimento` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

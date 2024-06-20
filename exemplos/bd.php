@@ -17,15 +17,11 @@ try {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $telefone = $_POST['telefone'];
-        $estado = $_POST['estado'];
-        $cidade = $_POST['cidade'];
-        $endereco = $_POST['endereco'];
         $data_nascimento = $_POST['data_nascimento'];
-        $cpf = $_POST['cpf'];
 
         // Prepara a consulta SQL
-        $sql = "INSERT INTO agenda (nome, email, telefone, estado, cidade, endereco, data_nascimento, cpf )
-                VALUES (:nome, :email, :telefone, :estado, :cidade, :endereco, :data_nascimento, :cpf)";
+        $sql = "INSERT INTO agenda (nome, email, telefone, data_nascimento,)
+                VALUES (:nome, :email, :telefone, :data_nascimento)";
 
         // Prepara a declaração
         $stmt = $pdo->prepare($sql);
@@ -34,11 +30,7 @@ try {
         $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindValue(':estado', $estado, PDO::PARAM_STR);
-        $stmt->bindValue(':cidade', $cidade, PDO::PARAM_STR);
-        $stmt->bindValue(':endereco', $endereco, PDO::PARAM_STR);
         $stmt->bindValue(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
-        $stmt->bindValue(':cpf', $cpf, PDO::PARAM_STR);
 
         // Executa a consulta
         $stmt->execute();
