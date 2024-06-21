@@ -114,6 +114,19 @@ try {
                 <button
                     type="reset"
                     class="btn btn-primary">Excluir</button>
+
+                    <?php
+                        if (isset($_POST['botao'])) {
+                            header('Location: crudAgenda.php');
+                            exit;
+                        }
+                    ?>
+                    <form method="post">
+                    <button 
+                    type="submit"
+                    class="btn btn-primary" 
+                    name="botao" >Acessar o CRUD</button>
+                    </form>
             </form>
         </div>
     </body>

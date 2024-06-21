@@ -42,25 +42,21 @@ $data_nascimento = isset($_POST['data_nascimento']) ? $_POST['data_nascimento'] 
 
 if ($acao === 'adicionar') {
     adicionarContato($nome, $email, $telefone, $data_nascimento);
-    header ('Location: crud_php');
+    header ('Location: agenda.php');
     exit();
 } elseif ($acao === 'editar') {
     $id = intval($_GET['id']);
-    $nomeoriginal = ($_GET['nome']);
-    $emailoriginal = ($_GET['email']);
-    $telefoneoriginal = ($_GET['telefone']);
-    $data_nascimentooriginal = ($_GET['data_nascimento']);
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
     $data_nascimento = $_POST['data_nascimento'];
     editarContato($id, $nome, $email, $telefone, $data_nascimento);
-    header('Location: editar.php?id=' . $id . 'nome=' . $nomeoriginal . 'email=' . $emailoriginal . 'telefone=' . $telefoneriginal . 'data_nascimento=' . $data_nascimentooriginal);
-    // redirecionar para editar.php com o ID
+    header('Location: editarAgenda.php?id=' . $id . 'nome=' . $nome . 'email=' . $email . 'telefone=' . $telefone . 'data_nascimento=' . $data_nascimento);
+    // redirecionar para editarAgenda.php com o ID
     exit();
 } elseif ($acao === 'excluir') {
     excluirContato($id);
-    header('Location: crud.php');
+    header('Location: agenda.php');
     exit();
 }
 
@@ -72,12 +68,16 @@ $contatos = getContatos();
 <form method="post" action="acao=adicionar">
     <label for="nome">Nome: </label>
     <input type="text" id="nome" name="name" required="required">
+
     <label for="email">E-mail: </label>
     <input type="email" id="email" name="email" required="required">
+
     <label for="telefone">Telefone/Telefon Celular: </label>
     <input type="tel" id="telefone" name="telefone" required="required">
+
     <label for="data_nascimento">Data de nascimento: </label>
     <input type="date" id="data_nascimento" name="data_nascimento" required="required">
+    
     <button type="submit">Adicionar</button>
 </form>
 <table border="border">

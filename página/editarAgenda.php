@@ -16,7 +16,7 @@
     }
 
     // Buscar o nome atual e armazenar o nome original
-    $sql = "SELECT nome FROM nomes WHERE id = $id";
+    $sql = "SELECT nome, email, telefone, data_nascimento FROM contatos WHERE id = $id";
     $result = $db->query($sql);
 
     if ($result->num_rows == 0) {
@@ -24,9 +24,11 @@
         exit();
     }
 
-    $nomeAtual = $result->fetch_assoc()["nome"];
-    print_r($nomeAtual);
-    $nomeOriginal = $nomeAtual;
+    $contato = $result->fetch_assoc();
+    $nomeOriginal = $contato['nome'];
+    $emailOriginal = $contato['email'];
+    $telefoneOriginal = $contato['telefone'];
+    $data_nascimentoOriginal = $contato['data_nascimento'];
 
     // Se o novo nome foi recebido, validar e atualizar no banco de dados
     if (isset($_POST['novo_nome'])) {
@@ -38,7 +40,7 @@
             exit();
         }
 
-        $sql = "UPDATE nomes SET nome = '$novoNome' WHERE id = $id";
+        $sql = "UPDATE contatos SET nome = '$novoNome' WHERE id = $id";
         $result = $db->query($sql);
 
         if ($result === false) {
@@ -46,7 +48,7 @@
             exit();
         }
 
-        header('Location: crud.php');
+        header('Location: agenda.php');
         exit();
     }
 
